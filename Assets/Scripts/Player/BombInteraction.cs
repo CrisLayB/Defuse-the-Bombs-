@@ -10,12 +10,14 @@ public class BombInteraction : MonoBehaviour
     private Jump _jump;
     private Crouch _crouch;
     private Camera _playerCamera;
+    private FirstPersonAudio _firstPersonAudio;
     
     private void Start()
     {
         _movement = GetComponent<FirstPersonMovement>();
         _jump = GetComponent<Jump>();
         _crouch = GetComponent<Crouch>();
+        _firstPersonAudio = GetComponent<FirstPersonAudio>();
 
         _playerCamera = GetComponentInChildren<Camera>();
     }
@@ -24,10 +26,10 @@ public class BombInteraction : MonoBehaviour
     {
         if(_bombGameEvent == null) return;
         
-        if(Input.GetButtonDown("Interaction") && !_bombGameEvent.IsSucess()) // Allow press the button for interaction
+        if(Input.GetButtonDown("Interaction") && !_bombGameEvent.IsFinished()) // Allow press the button for interaction
         {
             TogglePlayerControl(false);
-            _bombGameEvent.EnterToTheGame();
+            _bombGameEvent.EnterToTheGame();            
         }
     }
     
@@ -73,6 +75,7 @@ public class BombInteraction : MonoBehaviour
         if (_jump != null) _jump.enabled = isActive;
         if (_crouch != null) _crouch.enabled = isActive;
         if (_playerCamera != null) _playerCamera.enabled = isActive;
+        if(_firstPersonAudio != null) _firstPersonAudio.enabled = isActive;
 
         // TODO: CHECK CONDITION:
     }

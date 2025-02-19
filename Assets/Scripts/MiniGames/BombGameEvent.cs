@@ -5,10 +5,17 @@ using UnityEngine.Events;
 
 public class BombGameEvent : MonoBehaviour
 {
-    [SerializeField] private GameObject[] gameElements;
+    [Header("When Game Its activated")]
+    [SerializeField] private GameObject[] gameElementsToActivateForPlay;
+    [SerializeField] private UnityEvent _optionalExtraEffects;
     
+    [Space(1)]
+    [Header("Text Events")]
     [SerializeField] private UnityEvent activateTextEvent;
     [SerializeField] private UnityEvent deactivateTextEvent;
+
+    [Space(1)]
+    [Header("Propierties when the game is finished")]
     [SerializeField] private float secondsToReturn = 5f;
     [SerializeField] private UnityEvent _eventAfterReturn;
 
@@ -21,9 +28,9 @@ public class BombGameEvent : MonoBehaviour
 
     private void Awake() 
     {                                
-        if(gameElements.Length == 0) Debug.Log("Game Elements List is empty");
+        if(gameElementsToActivateForPlay.Length == 0) Debug.Log("Game Elements List is empty");
         
-        if(gameElements == null) Debug.LogError("GameCamera is null");
+        if(gameElementsToActivateForPlay == null) Debug.LogError("GameCamera is null");
         
         ToogleObjectsOfGame(false);
 
@@ -42,7 +49,9 @@ public class BombGameEvent : MonoBehaviour
 
     public void EnterToTheGame()
     {
+        DeactiveGametext();
         ToogleObjectsOfGame(true);
+        _optionalExtraEffects?.Invoke();
     }
 
     public void ReturnToMainGame()
@@ -59,7 +68,7 @@ public class BombGameEvent : MonoBehaviour
 
     private void ToogleObjectsOfGame(bool toogle)
     {
-        foreach (GameObject element in gameElements)
+        foreach (GameObject element in gameElementsToActivateForPlay)
         {
             element.SetActive(toogle);
         }
