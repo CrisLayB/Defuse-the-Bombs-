@@ -63,7 +63,7 @@ public class CatMichil : MonoBehaviour
         Destroy(this, 2f);
     }
 
-    void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.GetComponent<BombGameEvent>())
         {
