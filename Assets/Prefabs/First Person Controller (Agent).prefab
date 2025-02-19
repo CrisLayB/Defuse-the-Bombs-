@@ -996,7 +996,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4307779845923156479
 Transform:
   m_ObjectHideFlags: 0
@@ -1122,6 +1122,7 @@ GameObject:
   - component: {fileID: 7441699621084846441}
   - component: {fileID: 8289053626549204896}
   - component: {fileID: 8134446704754357194}
+  - component: {fileID: 8521105894669882318}
   m_Layer: 0
   m_Name: First Person Controller (Agent)
   m_TagString: Untagged
@@ -1246,6 +1247,18 @@ MonoBehaviour:
   headToLower: {fileID: 8413378030595492687}
   crouchYHeadPosition: 1
   colliderToLower: {fileID: 2314296628333939443}
+--- !u!114 &8521105894669882318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5676330141910273763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bfe3121c9312fc428d14f2c40af94e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5707871723043076511
 GameObject:
   m_ObjectHideFlags: 0
