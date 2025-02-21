@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class BombInteraction : MonoBehaviour
 {
+    [SerializeField] private GameObject _activeGameOverCutscene;
+    
     private BombGameEvent _bombGameEvent = null;
     
     private FirstPersonMovement _movement;
     private Jump _jump;
     private Crouch _crouch;
     private Camera _playerCamera;
-    private FirstPersonAudio _firstPersonAudio;
+    private FirstPersonAudio _firstPersonAudio;    
     
     private void Start()
     {
@@ -50,7 +52,7 @@ public class BombInteraction : MonoBehaviour
         {
             Debug.DrawRay(camRay.origin, camRay.direction * maxRayDistance, Color.blue);
             _bombGameEvent?.DeactiveGametext();
-            _bombGameEvent = null;       
+            _bombGameEvent = null;
         }
     }    
 
@@ -77,6 +79,17 @@ public class BombInteraction : MonoBehaviour
         if (_playerCamera != null) _playerCamera.enabled = isActive;
         if(_firstPersonAudio != null) _firstPersonAudio.enabled = isActive;
 
-        // TODO: CHECK CONDITION:
+        if(isActive && _bombGameEvent.IsFinished() && !_bombGameEvent.IsSucess())
+        {            
+            StartCoroutine(ThrowGameOverCutscene());
+        }
+    }
+
+    private IEnumerator ThrowGameOverCutscene()
+    {
+        yield return new WaitForSeconds(1.5f);
+        TogglePlayerControl(false);
+        _activeGameOverCutscene?.SetActive(true);
+        _bombGameEvent = null;
     }
 }
