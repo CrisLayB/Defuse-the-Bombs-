@@ -12,6 +12,7 @@ public class Timer : MonoBehaviour
     // --> Atributos
     [SerializeField] private int minutes;
     [SerializeField] private int seconds;
+    [SerializeField] private bool _startTimerAwake = false;
     [SerializeField] private TMP_Text _textTime;
 
     [Space(5)]
@@ -32,6 +33,13 @@ public class Timer : MonoBehaviour
     public bool State
     {
         get { return _state; }
+    }
+
+    private void Start() 
+    {
+        if(!_startTimerAwake) return;
+
+        StartTimer();
     }
 
     // --> Métodos
