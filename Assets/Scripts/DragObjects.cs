@@ -16,9 +16,9 @@ public class DragObjects : MonoBehaviour
 
         bool isHit = Physics.Raycast(ray, out hit, 4.5f, _draggableMask);
         if (isHit && _selectedObject == null)
-            _dragDialog.SetActive(true);
+            _dragDialog?.SetActive(true);
         else 
-            _dragDialog.SetActive(false);
+            _dragDialog?.SetActive(false);
         
 
         if (Input.GetMouseButtonDown(0)) {
