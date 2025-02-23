@@ -17882,27 +17882,6 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
---- !u!95 &1317298212
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 728896953846084329}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 1053a9eca7fa6334ba02fa0a4911e3d6, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1362210927
 GameObject:
   m_ObjectHideFlags: 0
@@ -29859,7 +29838,6 @@ GameObject:
   - component: {fileID: 5059245766901997779}
   - component: {fileID: 7440361866566048334}
   - component: {fileID: 7420912680379080366}
-  - component: {fileID: 1317298212}
   m_Layer: 0
   m_Name: Window.008
   m_TagString: Untagged
