@@ -122,6 +122,37 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &3945315
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3945316}
+  m_Layer: 0
+  m_Name: SpawnPoint (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3945316
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3945315}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 14.562, y: 1.802, z: 11.412}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1781740050}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &341881598 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2370581530829636289, guid: 424ce7ab7ecff8a48bbc09ace1f8dca0, type: 3}
@@ -17223,6 +17254,8 @@ MonoBehaviour:
     pointToSpawn: {fileID: 1308776125}
   - bombPrefab: {fileID: 7617879172217235502, guid: 4cc122298ed82d045bac29d0d8ccbc12, type: 3}
     pointToSpawn: {fileID: 1492619617}
+  - bombPrefab: {fileID: 3369956804157396271, guid: 85a6865857b08344c90a2973d767cc73, type: 3}
+    pointToSpawn: {fileID: 3945316}
   _gameManager: {fileID: 890389206}
 --- !u!4 &1781740050
 Transform:
@@ -17239,6 +17272,7 @@ Transform:
   m_Children:
   - {fileID: 1308776125}
   - {fileID: 1492619617}
+  - {fileID: 3945316}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1798514454
