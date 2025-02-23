@@ -33,24 +33,22 @@ public class BombDetector : MonoBehaviour
             
             // A better implementation should be possible, but this is fine for now.
             if (distance > (2*realRadius / 3)) {
-                if (Time.time >= nextPlayTime) {
-                    Debug.Log("Play Sound");
-                    _detectorSource.PlayOneShot(_detectorSound);
-                    nextPlayTime += 1f;
-                }
+                if (Time.time >= nextPlayTime)
+                    PlaySound(1f);
             } else if (distance <= (2*realRadius / 3) && distance >= (realRadius / 3)) {
-                if (Time.time >= nextPlayTime) {
-                    Debug.Log("Play Sound");
-                    _detectorSource.PlayOneShot(_detectorSound);
-                    nextPlayTime += 0.6f;
-                }
+                if (Time.time >= nextPlayTime)
+                    PlaySound(0.6f);
             } else {
-                if (Time.time >= nextPlayTime) {
-                    Debug.Log("Play Sound");
-                    _detectorSource.PlayOneShot(_detectorSound);
-                    nextPlayTime += 0.3f;
-                }
+                if (Time.time >= nextPlayTime) 
+                    PlaySound(0.3f);
             }
         }
+    }
+
+    void PlaySound(float delay)
+    {
+        Debug.Log("Play Sound");
+        _detectorSource.PlayOneShot(_detectorSound);
+        nextPlayTime += delay;
     }
 }
