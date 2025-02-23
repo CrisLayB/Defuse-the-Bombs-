@@ -51,7 +51,7 @@ public class Timer : MonoBehaviour
         InvokeRepeating("UpdateTimer", 0f, 1f);
     }
 
-    private void StopTimer()
+    public void StopTimer()
     {
         CancelInvoke();
     }

@@ -41,7 +41,8 @@ public class CatMichil : MonoBehaviour
         _rotationTime += Time.deltaTime * _rotationSpeed;
         float angle = Mathf.Sin(_rotationTime) * _maxAngle;
 
-        transform.rotation = Quaternion.Euler(angle, 0, 0);
+        // ! Becarefull wit this rotation.
+        transform.rotation = Quaternion.Euler(angle, 90, 0);
     }
 
     private void CheckForLaunch()
