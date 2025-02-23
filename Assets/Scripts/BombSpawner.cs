@@ -1,29 +1,44 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class BombSpawner: MonoBehaviour
+[Serializable]
+public struct BombToSpawn
 {
-    [SerializeField] private GameObject _bombPrefab;
-    [SerializeField] private int _bombAmount = 2;
-    private Transform[] _spawnPoints;
+    public GameObject bombPrefab;
+    public Transform pointToSpawn;
+}
+
+public class BombSpawner: MonoBehaviour
+{    
+    [SerializeField] private List<BombToSpawn> _bombsToSpawn;
+    [SerializeField] private GameManager _gameManager;
     private bool[] _spawned;
 
     void Start()
-    {
-        _spawnPoints = GetComponentsInChildren<Transform>();
-        _spawned = new bool[_spawnPoints.Length];
-        if (_spawnPoints.Length <= _bombAmount)
-            Debug.LogError("The amount of bombs is greater than the spawnpoints available");
+    {        
+        _spawned = new bool[_bombsToSpawn.Count];
+        SetAllTheBombs();
+    }
 
+    private void SetAllTheBombs()
+    {
         int bombCount = 0;
-        while (bombCount < _bombAmount) {
-            int randomIndex = Random.Range(0, _spawnPoints.Length);
+        while (bombCount < _bombsToSpawn.Count) 
+        {
+            int randomIndex = UnityEngine.Random.Range(0, _bombsToSpawn.Count);
+
             if (!_spawned[randomIndex])
             {
-                Instantiate(_bombPrefab, _spawnPoints[randomIndex].position,  _spawnPoints[randomIndex].rotation);
+                BombToSpawn bombToSpawn = _bombsToSpawn[randomIndex];
+                GameObject bomb = bombToSpawn.bombPrefab;
+                Transform point = bombToSpawn.pointToSpawn;
+                Instantiate(bomb, point.position,  point.rotation);
                 _spawned[randomIndex] = true;
                 bombCount += 1;
             }
         }
-        
+
+        _gameManager.SetTotalGames(bombCount);
     }
 }

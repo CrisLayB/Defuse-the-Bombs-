@@ -12,7 +12,9 @@ public class BombInteraction : MonoBehaviour
     private Jump _jump;
     private Crouch _crouch;
     private Camera _playerCamera;
-    private FirstPersonAudio _firstPersonAudio;    
+    private FirstPersonAudio _firstPersonAudio;
+    private CapsuleCollider _collider;
+    private Rigidbody _rigidBody;
     
     private void Start()
     {
@@ -20,6 +22,8 @@ public class BombInteraction : MonoBehaviour
         _jump = GetComponent<Jump>();
         _crouch = GetComponent<Crouch>();
         _firstPersonAudio = GetComponent<FirstPersonAudio>();
+        _collider = GetComponent<CapsuleCollider>();
+        _rigidBody = GetComponent<Rigidbody>();
 
         _playerCamera = GetComponentInChildren<Camera>();
     }
@@ -77,7 +81,11 @@ public class BombInteraction : MonoBehaviour
         if (_jump != null) _jump.enabled = isActive;
         if (_crouch != null) _crouch.enabled = isActive;
         if (_playerCamera != null) _playerCamera.enabled = isActive;
-        if(_firstPersonAudio != null) _firstPersonAudio.enabled = isActive;
+        if (_firstPersonAudio != null) _firstPersonAudio.enabled = isActive;
+
+        // Ignore colliders of the player for evit obstacles with the minigame and the player
+        if (_collider != null) _collider.isTrigger = !isActive;
+        if  (_rigidBody != null) _rigidBody.isKinematic = !isActive;
 
         if(isActive && _bombGameEvent.IsFinished() && !_bombGameEvent.IsSucess())
         {            

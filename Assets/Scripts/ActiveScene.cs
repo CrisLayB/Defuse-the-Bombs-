@@ -6,6 +6,7 @@ using UnityEngine.Events;
 public class ActiveScene : MonoBehaviour
 {
     [SerializeField] private float _secondsShowAction = 3f;
+    [SerializeField] private UnityEvent _beforeToStart;
     [SerializeField] private UnityEvent _actionToStart;
     [SerializeField] private GameObject _uiToShow;
 
@@ -18,6 +19,7 @@ public class ActiveScene : MonoBehaviour
 
     private IEnumerator ActionStart()
     {        
+        _beforeToStart?.Invoke();
         yield return new WaitForSeconds(_secondsShowAction);
         _actionToStart?.Invoke();
         yield return new WaitForSeconds(_secondsToShowUI);
