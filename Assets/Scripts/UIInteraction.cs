@@ -24,6 +24,7 @@ public class UIInteraction : MonoBehaviour
 
         if(Input.GetKeyDown(_returnMainMenu))
         {
+            Cursor.lockState = CursorLockMode.None;
             _returnMainMenuEvent?.Invoke();
         }
     }
