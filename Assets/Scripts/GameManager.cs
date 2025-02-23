@@ -18,6 +18,8 @@ public class GameManager : MonoBehaviour
 
     public void OnePoinWinned()
     {            
+        if(_finished) return;
+        
         counterWinnedGames++;
 
         if(counterWinnedGames >= counterTotalGames)

@@ -28,6 +28,7 @@ public class ThrowBomb : MonoBehaviour
     private float _horizontalOffset = 0f;
     private float _verticalOffset = 0f;
     private Vector3[] _trajectoryPoints;
+    private bool _winnedCounted = false;
 
     private void Start() 
     {
@@ -102,17 +103,23 @@ public class ThrowBomb : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        if(_winnedCounted) return;
+
         if(collision.gameObject.GetComponent<Goal>())
         {
             _winEvent?.Invoke();
+            _winnedCounted = true;
         }
     }
 
     void OnTriggerEnter(Collider other)
     {
+        if(_winnedCounted) return;
+
         if(other.gameObject.GetComponent<Goal>())
         {
             _winEvent?.Invoke();
+            _winnedCounted = true;
         }
     }
 }

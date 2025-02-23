@@ -20,6 +20,7 @@ public class CatMichil : MonoBehaviour
     private float _rotationTime = 0f;
     private bool _isLaunched = false;
     private Rigidbody _rb;
+    private bool _winnedCounted = false;
 
     private void Start()
     {
@@ -66,9 +67,12 @@ public class CatMichil : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        if(_winnedCounted) return;
+        
         if(collision.gameObject.GetComponent<BombGameEvent>())
         {
             _winEvent?.Invoke();
+            _winnedCounted = true;
         }
     }
 }
