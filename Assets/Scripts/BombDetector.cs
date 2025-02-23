@@ -21,7 +21,7 @@ public class BombDetector : MonoBehaviour
 
     void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("Player")) {
+        if (other.gameObject.GetComponent<FirstPersonMovement>()) {
             float colliderRadius = GetComponent<SphereCollider>().radius;
             float realRadius = colliderRadius * transform.localScale.x; //Asumes restricted scaling
             
